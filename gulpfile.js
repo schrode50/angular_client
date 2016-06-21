@@ -5,9 +5,9 @@ var gulp = require('gulp');
 var webpack = require('webpack-stream');
 
 const paths = {
-  js: __dirname + '/app/**/*.js',
-  html: __dirname + '/app/index.html',
-  css: __dirname + '/app/style.css'
+  js: __dirname + '/client/**/*.js',
+  html: __dirname + '/client/index.html',
+  css: __dirname + '/client/style.css'
 };
 
 gulp.task('clean', ()=>{
