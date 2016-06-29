@@ -5,15 +5,15 @@ var gulp = require('gulp');
 var webpack = require('webpack-stream');
 
 const paths = {
-  js: __dirname + '/client/**/*.js',
-  html: __dirname + '/client/index.html',
-  css: __dirname + '/client/style.css'
+  js: __dirname + '/app/**/*.js',
+  html: __dirname + '/app/index.html',
+  css: __dirname + '/app/css/style.css'
 };
 
-gulp.task('clean', ()=>{
-  gulp.src('./build/*')
-    .pipe(clean());
-});
+// gulp.task('clean', ()=>{
+//   gulp.src('./build/*')
+//     .pipe(clean());
+// });
 
 gulp.task('copy', ()=>{
   gulp.src(paths.html)
@@ -42,6 +42,6 @@ gulp.task('bundle:test', () => {
     .pipe(gulp.dest(__dirname + '/test'));
 });
 
-gulp.task('build', ['clean', 'copy', 'bundle']);
+gulp.task('build', ['copy', 'bundle']);
 
 gulp.task('default', ['build']);

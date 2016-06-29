@@ -1,6 +1,5 @@
 module.exports = function(app){
   app.controller('MarvelController', ['$http', MarvelController]);
-
 };
 
 function MarvelController($http){
@@ -19,7 +18,7 @@ MarvelController.prototype.getMarvel = function(){
 };
 
 MarvelController.prototype.addMarvel = function(){
-  this.$http.post(this.url, this.weasel)
+  this.$http.post(this.url, this.marvel)
     .then((res)=>{
       this.marvel.push(res.data);
       this.weasel = null;
@@ -28,23 +27,23 @@ MarvelController.prototype.addMarvel = function(){
     });
 };
 
-MarvelController.prototype.deleteMarvel = function(weasel){
-  this.$http.delete(this.url + weasel._id)
+MarvelController.prototype.deleteMarvel = function(marvel){
+  this.$http.delete(this.url + marvel._id)
     .then(()=>{
-      this.marvel.splice(this.marvel.indexOf(weasel), 1);
+      this.marvel.splice(this.marvel.indexOf(marvel), 1);
     }, (err)=>{
       console.log(err);
     });
 };
 
-MarvelController.prototype.updateMarvel = function(weasel, updated){
+MarvelController.prototype.updateMarvel = function(marvel, updated){
 
-  weasel.strength = updated.strength;
+  marvel.strength = updated.strength;
 
-  this.$http.put(this.url, weasel)
+  this.$http.put(this.url, marvel)
     .then(()=>{
       this.marvel = this.marvel.map((w)=>{
-        return w._id === weasel._id ? weasel : w;
+        return w._id === marvel._id ? marvel : w;
       });
     }, (err)=>{
       console.log(err);

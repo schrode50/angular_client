@@ -3,9 +3,10 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Marvel/DC Adventure</title>
+	<link rel="stylesheet" href="style.css" media="screen">
 </head>
 <body ng-app="DcvMarvel-app">
-  <section ng-controller="MarvelsController as marvelctrl" ng-init="marvelctrl.getAllMarvel()">
+  <section ng-controller="MarvelController as marvelctrl" ng-init="marvelctrl.getAllMarvel()">
     <h1>Marvel:</h1>
     <ul>
       <li ng-repeat="marvel in marvelctrl.marvels">{{marvel.name}}, {{marvel.world}}, {{marvel.power}}
