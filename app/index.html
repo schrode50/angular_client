@@ -5,55 +5,14 @@
 	<title>Marvel/DC Adventure</title>
 	<link rel="stylesheet" href="style.css" media="screen">
 </head>
-<body ng-app="DcvMarvel-app">
-  <section ng-controller="MarvelController as marvelctrl" ng-init="marvelctrl.getAllMarvel()">
-    <h1>Marvel:</h1>
-    <ul>
-      <li ng-repeat="marvel in marvelctrl.marvels">{{marvel.name}}, {{marvel.world}}, {{marvel.power}}
-        <button ng-click="marvelctrl.deleteMarvel(marvel)">Delete Marvel</button>
-        <button ng-click="marvel.editing = !marvel.editting">Update Marvel</button>
-        <form ng-hide="!marvel.editing" ng-submit="marvelctrl.updateMarvel(marvel, update)">
-          <input ng-model="update.name" type="text"/>
-          <input ng-model="update.world" type="text"/>
-          <input ng-model="update.powers" type="number"/>
-          <button type="submit">Update</button>
-        </form>
-      </li>
-    </ul>
-    <form ng-submit="marvelctrl.createMarvel(newMarvel)">
-      <input ng-model="marvelctrl.newMarvel.name" type="text" placeholder="Name"/>
-      <input ng-model="marvelctrl.newMarvel.world" type="text" placeholder="World"/>
-      <input ng-model="marvelctrl.newMarvel.status" type="number" placeholder="Power"/>
-      <button type="submit">New Marvel</button>
-    </form>
-      <p>{{marvels}}</p>
-
-  </section>
-
-  <section ng-controller="DcController as dcctrl" ng-init="dcctrl.getAllDc()">
-    <h1>Dc Bastards:</h1>
-    <ul>
-      <li ng-repeat="dc in dcctrl.dc">{{dc.name}}, {{dc.world}}, {{dc.power}}
-        <button ng-click="dcctrl.deleteDc(dc)">Delete Dc</button>
-        <button ng-click="dc.editing = !dc.editting">Update Dc</button>
-        <form ng-hide="!dc.editing" ng-submit="dcctrl.updateDc(dc, update)">
-          <input ng-model="update.name" type="text"/>
-          <input ng-model="update.world" type="text"/>
-          <input ng-model="update.powers" type="number"/>
-          <button type="submit">Update</button>
-        </form>
-      </li>
-    </ul>
-    <form ng-submit="createDc(newDc)">
-      <input ng-model="dcctrl.newDc.name" type="text" placeholder="Name"/>
-      <input ng-model="dcctrl.newDc.world" type="text" placeholder="World"/>
-      <input ng-model="dcctrl.newDc.powers" type="number" placeholder="Power"/>
-      <button type="submit">New Dc</button>
-    </form>
-      <p>{{dc}}</p>
-
-  </section>
-
+<body ng-app="HeroApp">
+  <main ng-controller="HeroController as ctrl" ng-init="ctrl.getHeros()">
+		<!-- <h1>{{}}</h1> -->
+		<dc-list dc="heros.dc"></dc-list>
+		<dc-form hero="{}" type="new" faction="dc"></dc-form>
+		<marvel-list marvel="heros.marvel"></marvel-list>
+		<marvel-form hero="{}" type="new" faction="marvel"></marvel-form>
+	</main>
   <script src="./bundle.js"></script>
 </body>
 </html>

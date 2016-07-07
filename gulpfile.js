@@ -6,7 +6,7 @@ var webpack = require('webpack-stream');
 
 const paths = {
   js: __dirname + '/app/**/*.js',
-  html: __dirname + '/app/index.html',
+  html: __dirname + '/app/**/*.html',
   css: __dirname + '/app/css/style.css'
 };
 
