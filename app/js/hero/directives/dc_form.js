@@ -3,7 +3,8 @@ module.exports = function(app) {
     return {
       scope: {
         type: '@',
-        hero: '='
+        hero: '=',
+        faction: '@'
       },
       templateUrl: './templates/heros/hero_form.html',
       require: '^^ngController',

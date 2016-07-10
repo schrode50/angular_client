@@ -2,46 +2,41 @@
 
 module.exports = function(app) {
   app.controller('HeroController', function($http) {
-    this.marvel = [];
-    this.dc = [];
-    this.url = 'http://localhost:3000/api/';
+    this.marvels = [];
+    this.dcs = [];
 
     this.getDc = function() {
-      console.log('in getDc');
-      $http.get(this.url + 'dc/')
+      $http.get('http://localhost:3000/api/dc')
       .then((res) => {
-        this.dc = res.data;
+        this.dcs = res.data;
       }, (err) => {
         console.log(err);
       });
     };
 
     this.addDc = function(dc) {
-      console.log('in addDc');
-      $http.post(this.url + 'dc/', dc)
+      $http.post('http://localhost:3000/api/dc', dc)
       .then((res) => {
-        this.dc.push(res.data);
+        this.dcs.push(res.data);
         this.dc = null;
       }, (err) => {
         console.log(err);
       });
-    };
+    }.bind(this);
 
     this.deleteDc = function(dc) {
-      console.log('in deleteDc');
-      $http.delete(this.url + 'dc/' + dc._id)
+      $http.delete('http://localhost:3000/api/dc/' + dc._id)
       .then(() => {
-        this.dc.splice(this.dc.indexOf(dc), 1);
+        this.dcs.splice(this.dcs.indexOf(dc), 1);
       }, (err) => {
         console.log(err);
       });
     }.bind(this);
 
     this.updateDc = function(dc) {
-      console.log('in updateDc');
-      $http.put(this.url + 'dc/', dc)
+      $http.put('http://localhost:3000/api/dc/', dc)
       .then(() => {
-        this.dc = this.dc.map(n => {
+        this.dcs = this.dcs.map(n => {
           return n._id === dc._id ? dc : n;
         });
       }, (err) => {
@@ -50,41 +45,37 @@ module.exports = function(app) {
     }.bind(this);
 
     this.getMarvel = function() {
-      console.log('in getMarvel');
-      $http.get(this.url + 'marvel/')
+      $http.get('http://localhost:3000/api/marvel')
       .then((res) => {
-        this.marvel = res.data;
+        this.marvels = res.data;
       }, (err) => {
         console.log(err);
       });
     };
 
     this.addMarvel = function(marvel) {
-      console.log('in addMarvel');
-      $http.post(this.url + '/marvel/', marvel)
+      $http.post('http://localhost:3000/api/marvel', marvel)
       .then((res) => {
-        this.marvel.push(res.data);
+        this.marvels.push(res.data);
         this.marvel = null;
       }, (err) => {
         console.log(err);
       });
-    };
+    }.bind(this);
 
     this.deleteMarvel = function(marvel) {
-      console.log('in deleteMarvel');
-      $http.delete(this.url + 'marvel/' + marvel._id)
+      $http.delete('http://localhost:3000/api/marvel/' + marvel._id)
       .then(() => {
-        this.marvel.splice(this.marvel.indexOf(marvel), 1);
+        this.marvels.splice(this.marvels.indexOf(marvel), 1);
       }, (err) => {
         console.log(err);
       });
     }.bind(this);
 
     this.updateMarvel = function(marvel) {
-      console.log('in updateMarvel');
-      $http.put(this.url + 'marvel/', marvel)
+      $http.put('http://localhost:3000/api/marvel/', marvel)
       .then(() => {
-        this.marvel = this.marvel.map(n => {
+        this.marvels = this.marvels.map(n => {
           return n._id === marvel._id ? marvel : n;
         });
       }, (err) => {
@@ -93,7 +84,6 @@ module.exports = function(app) {
     }.bind(this);
 
     this.getHeros = function() {
-      console.log('in getHeros');
       this.getDc();
       this.getMarvel();
     };

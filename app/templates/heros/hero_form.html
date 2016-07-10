@@ -2,7 +2,7 @@
   <h3>{{formMessage}}</h3>
   <input placeholder="name" type="text" ng-model="hero.name">
   <input placeholder="world" type="text" ng-model="hero.world">
-  <input placeholder="powers" type="text" ng-model="hero.powers">
+  <input placeholder="powers" type="text" ng-model="hero.power">
   <button type="submit" ng-click="updateHero(hero)">{{type}} hero</button>
   <button ng-show="type === 'edit'" ng-click="deleteHero(hero)">Delete</button>
 </form>
